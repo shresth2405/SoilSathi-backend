@@ -64,7 +64,7 @@ export const loginGardener = async (req, res) => {
     return res.status(200)
         .cookie('token', token, options)
         .json(
-            new ApiResponse(200, device, "Device logged in successfully")
+            new ApiResponse(200, token, "Device logged in successfully")
         );
 };
 
