@@ -20,7 +20,7 @@ app.use(cookieParser());
 const server = http.createServer(app);
 
 const PORT = process.env.SOCKET_PORT || 8080;
-server.listen(PORT, '0.0.0.0', () => {
+server.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
   console.log(`🔌 WebSocket server ready`);
 });

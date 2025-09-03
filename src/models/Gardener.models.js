@@ -20,6 +20,10 @@ const GardenerSchema = new Schema({
         type: String,
         // required: true,
     },
+    City:{
+        type: String,
+        required: true,
+    },
     plants:[
         {
             type:String,

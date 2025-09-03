@@ -16,7 +16,7 @@ const generateTokens = async (gardenerId) => {
 };
 
 export const createGardener = async (req, res) => {
-    const { username, email, password, deviceId } = req.body;
+    const { username, email, password, deviceId, city } = req.body;
     const existingdevice = await Gardener.findOne({ email: email });
     if (existingdevice) {
         throw new ApiError(400, "Email already exists");
@@ -26,7 +26,8 @@ export const createGardener = async (req, res) => {
         name: username,
         email,
         password,
-        deviceId
+        deviceId,
+        city
     });
 
     if (!gardener) {
