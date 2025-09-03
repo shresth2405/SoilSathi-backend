@@ -4,6 +4,7 @@ import { Gardener } from '../models/Gardener.models.js'
 
 export const verifyJWT = async(req , _ , next)=>{
     try{
+        console.log(req.header("Authorization"));
         const token = req.cookies?.token || req.header("Authorization")?.replace("Bearer ", "")
         
         // console.log(token);
