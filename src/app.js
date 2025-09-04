@@ -1,7 +1,7 @@
 import express from 'express'
 import cors from 'cors'
 import http from 'http'
-import wss from 'ws'
+// import wss from 'ws'
 import { getData, initWebSocketServer } from './controllers/WsController.js';
 import cookieParser from 'cookie-parser';
 import { WebSocketServer } from 'ws';
