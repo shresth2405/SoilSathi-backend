@@ -28,11 +28,19 @@ const SensorSchema = new Schema({
     pH:{
         type: Number,
         default: 0
-    }, 
-    RainFall:{
+    },
+    soilMoisture:{
         type: Number,
         default: 0
-    }
+    },
+    pressure:{
+        type: Number,
+        default: 0
+    },
+    altitude:{
+        type: Number,
+        default: 0
+    },
 },{
     timestamps:true,
 })
