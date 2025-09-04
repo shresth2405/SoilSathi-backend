@@ -29,7 +29,7 @@ export const createGardener = async (req, res) => {
             email,
             password,
             deviceId,
-            city
+            City: city
         });
 
         if (!gardener) {
@@ -43,6 +43,7 @@ export const createGardener = async (req, res) => {
         throw new ApiError(500, `Error creating gardener: ${e.message}`);
     }
 };
+
 export const loginGardener = async (req, res) => {
     const { email, password, deviceId } = req.body;
     const device = await Gardener.findOne({ email }).select('+password');
