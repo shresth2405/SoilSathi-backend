@@ -20,10 +20,7 @@ app.use(cookieParser());
 const server = http.createServer(app);
 
 const PORT = process.env.SOCKET_PORT || 8080;
-server.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
-  console.log(`🔌 WebSocket server ready`);
-});
+
 
 
 
@@ -34,6 +31,11 @@ app.use('/api/v1/gardener', GardenerRouter)
 
 initWebSocketServer(server)
 app.get('/sensor/:deviceId', getData);
+
+server.listen(PORT, () => {
+  console.log(`🚀 Server running on port ${PORT}`);
+  console.log(`🔌 WebSocket server ready`);
+});
 
 
 export default app;
