@@ -7,7 +7,7 @@ let connectedClients = new Set();
 export const initWebSocketServer = (server) => {
   const wss = new WebSocketServer({ 
     server,
-    path: '/', // Explicitly set path
+    path: '/ws', // Explicitly set path
   });
 
   wss.on("connection", (ws, req) => {

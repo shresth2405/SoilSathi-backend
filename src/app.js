@@ -30,7 +30,7 @@ server.listen(PORT, () => {
 import GardenerRouter from './routes/Gardener.routes.js'
 
 
-app.use('/api/v1/Gardener', GardenerRouter)
+app.use('/api/v1/gardener', GardenerRouter)
 
 initWebSocketServer(server)
 app.get('/sensor/:deviceId', getData);
