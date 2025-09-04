@@ -16,29 +16,33 @@ const generateTokens = async (gardenerId) => {
 };
 
 export const createGardener = async (req, res) => {
-    const { username, email, password, deviceId, city } = req.body;
-    const existingdevice = await Gardener.findOne({ email: email });
-    if (existingdevice) {
-        throw new ApiError(400, "Email already exists");
+    try {
+        const { username, email, password, deviceId, city } = req.body;
+
+        const existingdevice = await Gardener.findOne({ email: email });
+        if (existingdevice) {
+            throw new ApiError(400, "Email already exists");
+        }
+
+        const gardener = await Gardener.create({ 
+            name: username,
+            email,
+            password,
+            deviceId,
+            city
+        });
+
+        if (!gardener) {
+            throw new ApiError(400, "Gardener is not created");
+        }
+
+        return res.status(201).json(
+            new ApiResponse(201, gardener, "Gardener created successfully")
+        );
+    } catch (e) {
+        throw new ApiError(500, `Error creating gardener: ${e.message}`);
     }
-
-    const gardener = await Gardener.create({ 
-        name: username,
-        email,
-        password,
-        deviceId,
-        city
-    });
-
-    if (!gardener) {
-        throw new ApiError(400, "Gardener is not created");
-    }
-
-    return res.status(201).json(
-        new ApiResponse(201, gardener, "Gardener created successfully")
-    );
 };
-
 export const loginGardener = async (req, res) => {
     const { email, password, deviceId } = req.body;
     const device = await Gardener.findOne({ email }).select('+password');
