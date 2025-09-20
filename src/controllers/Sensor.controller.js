@@ -38,6 +38,7 @@ export const getData = async (req, res) => {
     }
 
     const data = await Sensor.find({ deviceId }).sort({ createdAt: -1 }).limit(1);
+    console.log(data[0]);
     if (!data || data.length === 0) {
         throw new ApiError(404, "No data found for this device");
     }
