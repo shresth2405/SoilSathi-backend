@@ -20,6 +20,7 @@ export const SetDataFromEsp32 = async (req, res) => {
         altitude: altitude || 0,
         pH: pH || 0
     });
+    console.log(data);
 
     if (!data) {
         throw new ApiError(500, "Data couldnot be saved");
